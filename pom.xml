@@ -328,8 +328,7 @@
             </activation>
 
             <properties>
-                <additional.argLine /> <!-- Can be set from the command-line to enable JVM preview features -->
-                <surefire.argLine>--illegal-access=deny ${additional.argLine}</surefire.argLine>
+                <surefire.argLine>--illegal-access=deny</surefire.argLine>
             </properties>
 
             <build>
@@ -565,6 +564,19 @@
                     </plugin>
                 </plugins>
             </reporting>
+        </profile>
+
+        <profile>
+            <id>enablePreview</id>
+            <activation>
+                <property>
+                    <name>enablePreview</name>
+                </property>
+            </activation>
+
+            <properties>
+                <surefire.argLine>--illegal-access=deny --enable-preview</surefire.argLine>
+            </properties>
         </profile>
 
         <profile>
